@@ -28,7 +28,7 @@ typename pcl::PointCloud<PointT>::Ptr ProcessPointClouds<PointT>::FilterCloud(ty
     // Time segmentation process
     auto startTime = std::chrono::steady_clock::now();
 
-    // TODO:: Fill in the function to do voxel grid point reduction and region based filtering
+    //Fill in the function to do voxel grid point reduction and region based filtering
     
     typename pcl::PointCloud<PointT>::Ptr cloud_filtered (new pcl::PointCloud<PointT>);
     typename pcl::PointCloud<PointT>::Ptr cloud_boxed (new pcl::PointCloud<PointT>);
@@ -79,7 +79,7 @@ typename pcl::PointCloud<PointT>::Ptr ProcessPointClouds<PointT>::FilterCloud(ty
 template<typename PointT>
 std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::SeparateClouds(pcl::PointIndices::Ptr inliers, typename pcl::PointCloud<PointT>::Ptr cloud) 
 {
-  // TODO: Create two new point clouds, one cloud with obstacles and other with segmented plane
+  //Create two new point clouds, one cloud with obstacles and other with segmented plane
     typename pcl::PointCloud<PointT>::Ptr planeCloud (new pcl::PointCloud<PointT>());
     typename pcl::PointCloud<PointT>::Ptr obstacleCloud (new pcl::PointCloud<PointT>());
 
@@ -105,7 +105,7 @@ std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT
     // Time segmentation process
     auto startTime = std::chrono::steady_clock::now();
 
-    // TODO:: Fill in this function to find inliers for the cloud.
+    //Fill in this function to find inliers for the cloud.
     pcl::PointIndices::Ptr inliers (new pcl::PointIndices);
     pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients);
 
@@ -215,6 +215,7 @@ std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT
     return segResult;
 }
 
+//Function to help with euclidean clustering
 template<typename PointT>
 void ProcessPointClouds<PointT>::proximityFunctionCustom(const int id,const std::vector<std::vector<float>>& points, KdTree* tree, std::vector<int>& cluster, std::vector<bool>& processed,const float distanceTol)
 {
@@ -235,6 +236,7 @@ void ProcessPointClouds<PointT>::proximityFunctionCustom(const int id,const std:
   }
 }
 
+//Function to help with euclidean clustering using KD tree
 template<typename PointT>
 std::vector<std::vector<int>> ProcessPointClouds<PointT>::euclideanClusterCustom(const std::vector<std::vector<float>>& points, KdTree* tree, float distanceTol)
 {

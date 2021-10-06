@@ -1,6 +1,6 @@
 ##Sensor Fusion Udacity Course Projects
 
 This repo contains the solutions for the projects in the Udacity sensor fusion nanodegree. 
-For details about how to run the projects, refer to the original:
+For details about how to run the projects, refer to the original README file inside each respective project. 
 
-- [Lidar project repo](https://github.com/udacity/SFND_Lidar_Obstacle_Detection)
+- Project 1: [Lidar object detection](SFND_Lidar_Obstacle_Detection)
