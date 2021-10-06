@@ -88,7 +88,7 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, ProcessPointCloud
     renderPointCloud(viewer, segmentCloud.second,"groundPlane", Color(0,1,0));  //Render ground plane in green
 
     //Step 3: Euclidean clustering using custom made KD tree functions
-    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> cloudClusters = pointProcessor->customClustering(segmentCloud.first, 0.4, 35, 500);
+    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> cloudClusters = pointProcessor->customClustering(segmentCloud.first, 0.4, 10, 500);
 
     //Step 4: Visualization
     int clusterId = 0;
@@ -98,7 +98,7 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, ProcessPointCloud
     {
           std::cout << "cluster size ";
           pointProcessor->numPoints(cluster);
-          renderPointCloud(viewer,cluster,"obstCloud"+std::to_string(clusterId),colors[clusterId]);
+          renderPointCloud(viewer,cluster,"obstCloud"+std::to_string(clusterId),colors[clusterId%3]);
           Box box = pointProcessor->BoundingBox(cluster);
           renderBox(viewer,box,clusterId);
           ++clusterId;
